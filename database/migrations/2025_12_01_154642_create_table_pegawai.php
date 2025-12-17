@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pegawai', function (Blueprint $table) {
+        Schema::create('jibrilian_542393_pegawai', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pekerjaan_id')->constrained('pekerjaan')->cascadeOnDelete();
             $table->string('nama');
             $table->string('email')->unique();
-            $table->enum('gender', ['male','female']);
+            $table->enum('gender', ['male', 'female']);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
