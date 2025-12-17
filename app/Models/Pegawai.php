@@ -10,8 +10,8 @@ class Pegawai extends Model
     use SoftDeletes;
     protected $table = 'jibrilian_542393_pegawai';
 
-    public function pegawai()
+    public function pekerjaan()
     {
-        return $this->hasOne(Pekerjaan::class);
+        return $this->belongsTo(Pekerjaan::class);
     }
 }
