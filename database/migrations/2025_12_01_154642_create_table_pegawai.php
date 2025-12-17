@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pegawai');
+        Schema::dropIfExists('jibrilian_542393_pegawai');
     }
 };

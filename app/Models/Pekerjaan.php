@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Pekerjaan extends Model
 {
-    protected $table = 'pekerjaan';
-
+    use SoftDeletes;
+    protected $table = 'jibrilian_542393_pekerjaan';
     public function pegawai()
     {
         return $this->hasMany(Pegawai::class);
