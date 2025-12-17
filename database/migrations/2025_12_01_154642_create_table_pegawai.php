@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('jibrilian_542393_pegawai', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pekerjaan_id')->constrained('pekerjaan')->cascadeOnDelete();
+            $table->foreignId('pekerjaan_id')->constrained('jibrilian_542393_pekerjaan')->cascadeOnDelete();
             $table->string('nama');
             $table->string('email')->unique();
             $table->enum('gender', ['male', 'female']);
