@@ -43,8 +43,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     @stack('css')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body role="main">
+
 
 <nav class="bg-gray-100 border-b-4 border-[#C0392B]">
     <div class="max-w-screen-xl flex flex-wrap gap-3 items-center justify-between mx-auto p-4">
@@ -128,6 +130,17 @@
         menuBtn.setAttribute('aria-expanded', !menu.classList.contains('hidden'));
     });
 </script>
+
+@if (session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: @json(session('success')),
+    });
+</script>
+@endif
+
 @stack('js')
 </body>
 </html>

@@ -17,6 +17,7 @@
                 </form>
             </div>
             <div class="overflow-x-auto rounded-lg border border-gray-200">
+            <p>Jumlah Pekerjaan: {{$data->total()}}</p>
                 <table class="min-w-full divide-y divide-x divide-gray-200 text-sm">
                     <thead class="bg-gray-100">
                     <tr>
@@ -54,6 +55,7 @@
                         @endforelse
                     </tbody>
                 </table>
+                {{ $data->links() }}
             </div>
 
         </div>

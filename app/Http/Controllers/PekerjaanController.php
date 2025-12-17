@@ -9,19 +9,22 @@ use Illuminate\Validation\Rule;
 
 class PekerjaanController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $keyword = $request->get('keyword');
         $data = Pekerjaan::when($keyword, function ($query) use ($keyword) {
             $query->where('nama', 'like', "%{$keyword}%")->orWhere('deskripsi', 'like', "%{$keyword}%");
-        })->get();
+        })->paginate(10);
         return view('pekerjaan.index', compact('data'));
     }
 
-    public function add() {
+    public function add()
+    {
         return view('pekerjaan.add');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string',
             'deskripsi' => 'required|string',
@@ -40,12 +43,14 @@ class PekerjaanController extends Controller
         }
     }
 
-    public function edit(Request $request) {
+    public function edit(Request $request)
+    {
         $data = Pekerjaan::findOrFail($request->id);
         return view('pekerjaan.edit', compact('data'));
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string',
             'deskripsi' => 'required|string',
@@ -65,7 +70,8 @@ class PekerjaanController extends Controller
         }
     }
 
-    public function destroy(Request $request) {
+    public function destroy(Request $request)
+    {
         Pekerjaan::findOrFail($request->id)->delete();
         return redirect()->route('pekerjaan.index')->with('success', 'Data terhapus');
     }

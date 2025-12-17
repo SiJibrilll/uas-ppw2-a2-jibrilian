@@ -36,7 +36,7 @@ class PekerjaanSeeder extends Seeder
         ];
 
         foreach ($jobs as $job) {
-            DB::table('pekerjaan')->insert([
+            DB::table('jibrilian_542393_pekerjaan')->insert([
                 'nama' => $job,
                 'deskripsi' => $faker->sentence(8),
                 'created_at' => now(),
