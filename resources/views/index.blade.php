@@ -22,13 +22,16 @@
     <script src="{{ asset('plugins/chartjs-4/chart-4.5.0.js') }}"></script>
     <script>
         const ctx1 = document.getElementById('chart1');
+
+        const genderLabels = @json($genderLabels);
+        const genderData   = @json($genderCounts);
         new Chart(ctx1, {
             type: 'pie',
             data: {
-                labels: ["Male", "Female"],
+                labels: genderLabels,
                 datasets: [{
                     label: 'Jumlah',
-                    data: [4644,4800],
+                    data: genderData,
                     backgroundColor: [
                         '#3b82f6',
                         '#ec4899'
@@ -50,20 +53,17 @@
             }
         });
 
+        const jobLabels = @json($jobStats->pluck('nama'));
+        const jobData   = @json($jobStats->pluck('total'));
+
         const ctx2 = document.getElementById('chart2').getContext('2d');
         new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: [
-                    "Software Engineer",
-                    "Data Analyst",
-                    "Project Manager",
-                    "System Administrator",
-                    "UI/UX Designer"
-                ],
+                labels: jobLabels,
                 datasets: [{
                     label: 'Jumlah Pegawai',
-                    data: [110, 95, 85, 75, 70],
+                    data: jobData,
                     backgroundColor: '#C0392B',
                     borderColor: '#922B21',
                     borderWidth: 1,
